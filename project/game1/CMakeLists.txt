@@ -1,0 +1,1 @@
+add_library(game1 game1.cpp game1.hpp)

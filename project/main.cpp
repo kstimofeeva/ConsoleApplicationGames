@@ -4,6 +4,7 @@
 #include <fstream>
 #include <filesystem>
 #include <cstdlib> 
+#include <game1/game1.hpp>
 
 void print_start_message() {    
     std::ifstream file("start_message228.txt");
@@ -25,6 +26,32 @@ void print_help_message() {
     std::cout << file.rdbuf();
     file.close();
     std::cout << '\n';
+}
+
+int game1() {
+    Game1 g;
+    g.print_rules();
+    std::string s;
+    std::getline(std::cin, s);
+    int res = -1;
+    while (true) {
+        if (s == "/go" || s == "/again" || res == 1)
+            res = g.game();
+        else if (res == 0) {
+            system("cls");
+            g.print_rules();
+            res = -1;
+        }
+        else if (res == 2 || s == "/back" || s == "/start") {
+            system("cls");
+            return 0;
+        }   
+        else {
+            std::cout << "I don't know this command. Try again\n";
+            res = -1;
+        }
+    }
+    return 0;
 }
 
 void main_menu() {

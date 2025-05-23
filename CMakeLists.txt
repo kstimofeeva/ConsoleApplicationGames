@@ -15,4 +15,8 @@ include_directories(project)
 
 add_subdirectory(project)
 
-add_executable(mytest project/main.cpp "project/main.cpp")
+add_executable(mytest
+    project/main.cpp
+    project/game1/game1.cpp
+    project/game1/game1.hpp
+)

@@ -1,0 +1,5 @@
+Hello!
+This game has a range of numbers from 1 to 1000, you have to guess what number the program has guessed in 10 attempts. Enter the answer as a single number after the program asks about it. 
+If you want to end the game, enter the command /back and you will return to the start menu. 
+If the game ends and you want to play again, enter the command /again
+To start the game, type the command /go

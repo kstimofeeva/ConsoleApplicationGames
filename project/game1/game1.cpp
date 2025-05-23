@@ -31,7 +31,7 @@ int Game1::string_to_int(const std::string& s) {
 
 int Game1::game() {
     system("cls");
-    int number = rand();
+    int number = (rand() % 1000) + 1;
     std::string s;
     for (int i = 0; i < 10; ++i) {
         std::cout << "Remaining attempts: " << 10 - i << ". Enter a number from 1 to 1000\n";
@@ -53,6 +53,8 @@ int Game1::game() {
             int res = -1;
             while (res == -1) {
                 res = string_to_int(s);
+                if (res != -1)
+                    break;
                 std::cout << "Sorry, you entered the wrong number or I can't execute this command. Please re-enter\n";
                 std::getline(std::cin, s);
                 if (s == "/back" ) {
@@ -70,7 +72,7 @@ int Game1::game() {
                 }
             }
             if (res == number) {
-                std::cout << "Congratulations! You win!\n If you want to repeat the game enter /again, else enter /back\n";
+                std::cout << "Congratulations! You win!\nIf you want to repeat the game enter /again, else enter /back\n";
                 while (true) {
                     std::getline(std::cin, s);
                     if (s == "/back") {
@@ -96,6 +98,25 @@ int Game1::game() {
             else {
                 std::cout << "The guessed number is less than this\n";
             }
+        }
+    }
+    std::cout << "You lost. Don't be upset. Next time you'll definitely succeed!\nIf you want to repeat the game enter /again, else enter /back\n";
+    while (true) {
+        std::getline(std::cin, s);
+        if (s == "/back") {
+            system("cls");
+            return 0;
+        }
+        else if (s == "/start") {
+            system("cls");
+            return 2;
+        }
+        else if (s == "/again") {
+            system("cls");
+            return 1;
+        }
+        else {
+            std::cout << "I don't know this command. Try again\n";
         }
     }
     return 0;

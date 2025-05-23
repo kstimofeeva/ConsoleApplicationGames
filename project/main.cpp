@@ -30,11 +30,11 @@ void print_help_message() {
 
 int game1() {
     Game1 g;
-    g.print_rules();
     std::string s;
-    std::getline(std::cin, s);
     int res = -1;
     while (true) {
+        g.print_rules();
+        std::getline(std::cin, s);
         if (s == "/go" || s == "/again" || res == 1)
             res = g.game();
         else if (res == 0) {
@@ -76,8 +76,9 @@ void main_menu() {
             system("cls");
             print_help_message();
         }
-        else {
-
+        else if (s == "/game1") {
+            system("cls");
+            game1();
         }
         pr = s;
     }

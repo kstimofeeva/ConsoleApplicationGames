@@ -64,3 +64,24 @@ void Game::Draw() {
 
     std::cout << "Score: " << snake.score << '\n';
 }
+
+void Game::Input() {
+    if(_kbhit()) {
+        if (_getch() == 'a' && snake.dir != RIGHT) {
+                snake.dir = LEFT;
+        }
+        if (_getch() == 'd' && snake.dir != LEFT) {
+            snake.dir = RIGHT;
+        }
+        if (_getch() == 'w' && snake.dir != DOWN) {
+            snake.dir = UP;
+        }
+        if (_getch() == 's' && snake.dir != UP) {
+            snake.dir = DOWN;
+        }
+        if (_getch() == 'x') {
+            snake.dir = LEFT;
+            gameOver = true;
+        }
+    }
+}

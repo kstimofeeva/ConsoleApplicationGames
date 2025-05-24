@@ -4,7 +4,8 @@
 #include <fstream>
 #include <filesystem>
 #include <cstdlib> 
-#include <game1/game1.hpp>
+#include "game1/game1.hpp"
+#include "game2/game2.hpp"
 
 void print_start_message() {    
     std::ifstream file("start_message228.txt");

@@ -34,21 +34,30 @@ int game1() {
     int res = -1;
     while (true) {
         g.print_rules();
-        std::getline(std::cin, s);
-        if (s == "/go" || s == "/again" || res == 1)
-            res = g.game();
-        else if (res == 0) {
-            system("cls");
-            g.print_rules();
-            res = -1;
-        }
-        else if (res == 2 || s == "/back" || s == "/start") {
+        if (res != 1)
+            std::getline(std::cin, s);
+        if (s == "/back" || s == "/start") {
             system("cls");
             return 0;
-        }   
+        }
+        else if (s == "/go" || s == "/again" || res == 1) {
+            res = g.game();
+        }
         else {
             std::cout << "I don't know this command. Try again\n";
             res = -1;
+            continue;
+        }
+        if (res == 0) {
+            system("cls");
+            res = -1;
+        }
+        else if (res == 2) {
+            system("cls");
+            return 0;
+        }
+        else if (res == 1) {
+            continue;
         }
     }
     return 0;
@@ -65,11 +74,12 @@ void main_menu() {
             print_start_message();
         }
         else if (s == "/back") {
-            if (pr == "") {
+            if (pr != "/help") {
                 std::cout << "You are in the start menu. Select another command\n";
             }
             else {
-                //
+                system("cls");
+                print_start_message();
             }
         }
         else if (s == "/help") {
@@ -79,6 +89,8 @@ void main_menu() {
         else if (s == "/game1") {
             system("cls");
             game1();
+            system("cls");
+            print_start_message();
         }
         pr = s;
     }

@@ -12,8 +12,8 @@
 #include <ctime>
 
 enum Direction { STOP = 0, LEFT, RIGHT, UP, DOWN };
-const int WIDTH = 50;
-const int HEIGHT = 50;
+const int WIDTH = 20;
+const int HEIGHT = 20;
 
 class Snake {
 public:

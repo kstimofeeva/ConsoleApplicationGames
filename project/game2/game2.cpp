@@ -21,6 +21,13 @@ void Game::gotoxy(int x, int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
+Game::Game() {
+    gameOver = false;
+    srand(time(0));
+    food.first = rand() % WIDTH;
+    food.second = rand() % HEIGHT;
+}
+
 void Game::Draw() {
     system("cls");
     for(int i = 0; i < WIDTH + 2; i++)

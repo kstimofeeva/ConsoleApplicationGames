@@ -55,6 +55,12 @@ int game1() {
     return 0;
 }
 
+int game2() {
+
+
+    return 0;
+}
+
 void main_menu() {
     print_start_message();
     std::string pr;
@@ -80,6 +86,10 @@ void main_menu() {
         else if (s == "/game1") {
             system("cls");
             game1();
+        }
+        else if (s == "/game2") {
+            system("cls");
+            game2();
         }
         pr = s;
     }

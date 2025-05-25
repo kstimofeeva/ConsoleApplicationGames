@@ -23,7 +23,7 @@ void Game::gotoxy(int x, int y) {
 
 void Game::Draw() {
     system("cls");
-    for(int i = 0; i < WIDTH+2; i++)
+    for(int i = 0; i < WIDTH + 2; i++)
         std::cout << "#";
     std::cout << '\n';
 
@@ -84,4 +84,52 @@ void Game::Input() {
             gameOver = true;
         }
     }
+}
+
+void Game::Logic() {
+    std::pair<int, int> newHead = snake.body[0];
+
+    switch(snake.dir) {
+        case LEFT:
+            newHead.first--;
+            break;
+        case RIGHT:
+            newHead.first++;
+            break;
+        case UP:
+            newHead.second--;
+            break;
+        case DOWN:
+            newHead.second++;
+            break;
+    }
+
+    if(newHead.first == food.first && newHead.second == food.second) {
+        snake.score += 10;
+        snake.body.insert(snake.body.begin(), newHead);
+        food.first = rand() % WIDTH;
+        food.second = rand() % HEIGHT;
+    }
+    else {
+        snake.body.insert(snake.body.begin(), newHead);
+        snake.body.pop_back();
+    }
+
+    if(newHead.first < 0 || newHead.first >= WIDTH ||
+       newHead.second < 0 || newHead.second >= HEIGHT)
+        gameOver = true;
+
+    for(int i = 1; i < snake.body.size(); i++)
+        if(newHead == snake.body[i])
+            gameOver = true;
+}
+
+void Game::Run() {
+    while(!gameOver) {
+        Draw();
+        Input();
+        Logic();
+        Sleep(100);
+    }
+    std::cout << "Game Over! Final score: " << snake.score << '\n';
 }

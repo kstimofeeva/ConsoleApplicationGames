@@ -92,6 +92,9 @@ void main_menu() {
             system("cls");
             print_start_message();
         }
+        else {
+            std::cout << "I don't know this command. Try again\n";
+        }
         pr = s;
     }
 }

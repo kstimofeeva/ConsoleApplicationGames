@@ -30,8 +30,9 @@ Game::Game() {
 
 void Game::Draw() {
     system("cls");
-    for(int i = 0; i < WIDTH + 2; i++)
+    for(int i = 0; i < WIDTH + 2; i++) {
         std::cout << "#";
+    }
     std::cout << '\n';
 
     for(int y = 0; y < HEIGHT; y++) {
@@ -39,7 +40,6 @@ void Game::Draw() {
             if (x == 0){
                 std::cout << "#";
             }
-
             bool isSnake = false;
             for(auto segment : snake.body) {
                 if(segment.first == x && segment.second == y) {
@@ -53,8 +53,9 @@ void Game::Draw() {
                 if(x == food.first && y == food.second) {
                     std::cout << "F";
                 }
-                else
+                else {
                     std::cout << " ";
+                }
             }
 
             if(x == WIDTH - 1) {
@@ -75,7 +76,7 @@ void Game::Draw() {
 void Game::Input() {
     if(_kbhit()) {
         if (_getch() == 'a' && snake.dir != RIGHT) {
-                snake.dir = LEFT;
+            snake.dir = LEFT;
         }
         if (_getch() == 'd' && snake.dir != LEFT) {
             snake.dir = RIGHT;
@@ -96,22 +97,20 @@ void Game::Input() {
 void Game::Logic() {
     std::pair<int, int> newHead = snake.body[0];
 
-    switch(snake.dir) {
-        case LEFT:
-            newHead.first--;
-            break;
-        case RIGHT:
-            newHead.first++;
-            break;
-        case UP:
-            newHead.second--;
-            break;
-        case DOWN:
-            newHead.second++;
-            break;
+    if (snake.dir == LEFT) {
+        newHead.first--;
+    }
+    if (snake.dir == RIGHT) {
+        newHead.first++;
+    }
+    if (snake.dir == UP) {
+        newHead.second--;
+    }
+    if (snake.dir == DOWN) {
+        newHead.second++;
     }
 
-    if(newHead.first == food.first && newHead.second == food.second) {
+    if (newHead.first == food.first && newHead.second == food.second) {
         snake.score += 10;
         snake.body.insert(snake.body.begin(), newHead);
         food.first = rand() % WIDTH;
@@ -122,13 +121,15 @@ void Game::Logic() {
         snake.body.pop_back();
     }
 
-    if(newHead.first < 0 || newHead.first >= WIDTH ||
-       newHead.second < 0 || newHead.second >= HEIGHT)
+    if(newHead.first < 0 || newHead.first >= WIDTH || newHead.second < 0 || newHead.second >= HEIGHT) {
         gameOver = true;
+    }
 
-    for(int i = 1; i < snake.body.size(); i++)
-        if(newHead == snake.body[i])
+    for(int i = 1; i < snake.body.size(); i++) {
+        if (newHead == snake.body[i]) {
             gameOver = true;
+        }
+    }
 }
 
 void Game::Run() {
@@ -139,4 +140,15 @@ void Game::Run() {
         Sleep(100);
     }
     std::cout << "Game Over! Final score: " << snake.score << '\n';
+}
+
+void Game::print_rules() {
+    std::ifstream file("game2_rules.txt");
+    if (!file) {
+        std::cerr << "Error" << std::endl;
+        return;
+    }
+    std::cout << file.rdbuf();
+    file.close();
+    std::cout << '\n';
 }

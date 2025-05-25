@@ -38,6 +38,7 @@ public:
     void Input();
     void Logic();
     void Run();
+    void print_rules();
 };
 
 

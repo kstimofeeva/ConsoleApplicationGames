@@ -65,9 +65,30 @@ int game1() {
 }
 
 int game2() {
-
-
+    Game game;
+    std::string s;
+    int res = -1;
+    game.print_rules();
+    while (true) {
+        if (res != 1)
+            std::getline(std::cin, s);
+        if (s == "/back" || s == "/start") {
+            system("cls");
+            return 0;
+        }
+        else if (s == "/go" || s == "/again" || res == 1) {
+            game.Run();
+            game = Game();
+            res = -1;
+        }
+        else {
+            std::cout << "I don't know this command. Try again\n";
+            res = -1;
+            continue;
+        }
+    }
     return 0;
+
 }
 
 void main_menu() {
@@ -99,12 +120,13 @@ void main_menu() {
             system("cls");
             print_start_message();
         }
-        else {
-            std::cout << "I don't know this command. Try again\n";
-        }
         else if (s == "/game2") {
             system("cls");
             game2();
+            system("cls");
+        }
+        else {
+            std::cout << "I don't know this command. Try again\n";
         }
         pr = s;
     }

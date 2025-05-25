@@ -19,4 +19,6 @@ add_executable(mytest
     project/main.cpp
     project/game1/game1.cpp
     project/game1/game1.hpp
+        project/game2/game2.hpp
+        project/game2/game2.cpp
 )

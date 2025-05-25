@@ -3,7 +3,7 @@
 #include <fstream>
 #include <filesystem>
 #include <random>
-#include <game1/game1.hpp>
+#include "game1/game1.hpp"
 
 void Game1::print_rules() {
     std::ifstream file("game1_rules.txt");

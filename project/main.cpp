@@ -4,7 +4,8 @@
 #include <fstream>
 #include <filesystem>
 #include <cstdlib> 
-#include <game1/game1.hpp>
+#include "game1/game1.hpp"
+#include "game2/game2.hpp"
 
 void print_start_message() {    
     std::ifstream file("start_message228.txt");
@@ -63,6 +64,12 @@ int game1() {
     return 0;
 }
 
+int game2() {
+
+
+    return 0;
+}
+
 void main_menu() {
     print_start_message();
     std::string pr;
@@ -94,6 +101,10 @@ void main_menu() {
         }
         else {
             std::cout << "I don't know this command. Try again\n";
+        }
+        else if (s == "/game2") {
+            system("cls");
+            game2();
         }
         pr = s;
     }

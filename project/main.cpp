@@ -34,7 +34,8 @@ int game1() {
     std::string s;
     int res = -1;
     while (true) {
-        g.print_rules();
+        if (res != -2)
+            g.print_rules();
         if (res != 1)
             std::getline(std::cin, s);
         if (s == "/back" || s == "/start") {
@@ -46,7 +47,7 @@ int game1() {
         }
         else {
             std::cout << "I don't know this command. Try again\n";
-            res = -1;
+            res = -2;
             continue;
         }
         if (res == 0) {

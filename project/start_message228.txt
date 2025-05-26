@@ -1,9 +1,9 @@
 Hi! This is an app with various games. To manage the games, use the available commands:
-/start — Return to the main menu
-/help — Open the app’s help guide
-/back — Exit the current game
-/game1 — Start a number game
-/game2 — Start a game of snake
+/start - Return to the main menu
+/help - Open the app's help guide
+/back - Exit the current game
+/game1 - Start a number game
+/game2 - Start a game of snake
 
 To learn the rules of a specific game, navigate to it using the commands. If you want to switch to another game, first use the /back command to end the current game, then select a new one.
 

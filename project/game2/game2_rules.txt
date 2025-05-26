@@ -1,0 +1,9 @@
+Hello!
+This is a standard snake game, where the size of the snake increases with the amount of food eaten.
+0 - snake body
+F - food
+# - board borders
+Controls WASD
+If you want to end the game, press x or hit the boarder.
+If the game is over and you want to play again, enter the command /again
+To start the game, enter the command /go

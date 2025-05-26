@@ -33,7 +33,7 @@ void Game::Draw() {
     for(int i = 0; i < WIDTH + 2; i++) {
         std::cout << "#";
     }
-    std::cout << '\n';
+    std::cout << std::endl;
 
     for(int y = 0; y < HEIGHT; y++) {
         for(int x = 0; x < WIDTH; x++) {
@@ -62,32 +62,33 @@ void Game::Draw() {
                 std::cout << "#";
             }
         }
-        std::cout << '\n';
+        std::cout << std::endl;
     }
 
     for(int i = 0; i < WIDTH + 2; i++) {
         std::cout << "#";
     }
-    std::cout << "\n";
+    std::cout << std::endl;
 
-    std::cout << "Score: " << snake.score << '\n';
+    std::cout << "Score: " << snake.score << std::endl;
 }
 
 void Game::Input() {
     if(_kbhit()) {
-        if (_getch() == 'a' && snake.dir != RIGHT) {
+        auto getch = _getch();
+        if (getch == 'a' && snake.dir != RIGHT) {
             snake.dir = LEFT;
         }
-        if (_getch() == 'd' && snake.dir != LEFT) {
+        else if (getch == 'd' && snake.dir != LEFT) {
             snake.dir = RIGHT;
         }
-        if (_getch() == 'w' && snake.dir != DOWN) {
+        else if (getch == 'w' && snake.dir != DOWN) {
             snake.dir = UP;
         }
-        if (_getch() == 's' && snake.dir != UP) {
+        else if (getch == 's' && snake.dir != UP) {
             snake.dir = DOWN;
         }
-        if (_getch() == 'x') {
+        else if (getch == 'x') {
             snake.dir = LEFT;
             gameOver = true;
         }
@@ -139,7 +140,7 @@ void Game::Run() {
         Logic();
         Sleep(100);
     }
-    std::cout << "Game Over! Final score: " << snake.score << '\n';
+    std::cout << "Game Over! Final score: " << snake.score << std::endl;
 }
 
 void Game::print_rules() {
@@ -150,5 +151,5 @@ void Game::print_rules() {
     }
     std::cout << file.rdbuf();
     file.close();
-    std::cout << '\n';
+    std::cout << std::endl;
 }
